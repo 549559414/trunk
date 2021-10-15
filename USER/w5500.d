@@ -1,0 +1,14 @@
+.\w5500.o: ..\BSP\W5500.c
+.\w5500.o: ..\CMSIS\stm32f10x.h
+.\w5500.o: ..\CMSIS\core_cm3.h
+.\w5500.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\w5500.o: ..\CMSIS\system_stm32f10x.h
+.\w5500.o: ..\USER\stm32f10x_conf.h
+.\w5500.o: ..\FWlib\inc\stm32f10x_gpio.h
+.\w5500.o: ..\CMSIS\stm32f10x.h
+.\w5500.o: ..\FWlib\inc\stm32f10x_rcc.h
+.\w5500.o: ..\FWlib\inc\stm32f10x_usart.h
+.\w5500.o: ..\FWlib\inc\stm32f10x_spi.h
+.\w5500.o: ..\BSP\W5500.h
+.\w5500.o: ..\SYSTEM\delay.h
+.\w5500.o: ..\SYSTEM\sys.h

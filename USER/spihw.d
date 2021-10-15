@@ -1,0 +1,13 @@
+.\spihw.o: ..\BSP\SPIHW.c
+.\spihw.o: ..\BSP\spihw.h
+.\spihw.o: ..\SYSTEM\sys.h
+.\spihw.o: ..\CMSIS\stm32f10x.h
+.\spihw.o: ..\CMSIS\core_cm3.h
+.\spihw.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\spihw.o: ..\CMSIS\system_stm32f10x.h
+.\spihw.o: ..\USER\stm32f10x_conf.h
+.\spihw.o: ..\FWlib\inc\stm32f10x_gpio.h
+.\spihw.o: ..\CMSIS\stm32f10x.h
+.\spihw.o: ..\FWlib\inc\stm32f10x_rcc.h
+.\spihw.o: ..\FWlib\inc\stm32f10x_usart.h
+.\spihw.o: ..\FWlib\inc\stm32f10x_spi.h

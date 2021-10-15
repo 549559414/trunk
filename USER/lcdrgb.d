@@ -1,0 +1,15 @@
+.\lcdrgb.o: ..\BSP\lcdrgb.c
+.\lcdrgb.o: ..\BSP\lcdrgb.h
+.\lcdrgb.o: ..\SYSTEM\sys.h
+.\lcdrgb.o: ..\CMSIS\stm32f10x.h
+.\lcdrgb.o: ..\CMSIS\core_cm3.h
+.\lcdrgb.o: C:\Keil\ARM\ARMCC\bin\..\include\stdint.h
+.\lcdrgb.o: ..\CMSIS\system_stm32f10x.h
+.\lcdrgb.o: ..\USER\stm32f10x_conf.h
+.\lcdrgb.o: ..\FWlib\inc\stm32f10x_gpio.h
+.\lcdrgb.o: ..\CMSIS\stm32f10x.h
+.\lcdrgb.o: ..\FWlib\inc\stm32f10x_rcc.h
+.\lcdrgb.o: ..\FWlib\inc\stm32f10x_usart.h
+.\lcdrgb.o: C:\Keil\ARM\ARMCC\bin\..\include\stdlib.h
+.\lcdrgb.o: ..\SYSTEM\delay.h
+.\lcdrgb.o: ..\BSP\spihw.h
