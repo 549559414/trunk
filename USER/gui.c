@@ -880,22 +880,22 @@ void GUI_Point(u8 x,u8 y,u8 width, u8 height,u8 image[])
 
 void GUITest(void)
 {
-	OLED_Clear(0);
-	GUI_ShowString(0,5,"6x8:abcdefghijklmnopqrstuvwxyz",8,1);
-	GUI_ShowString(0,25,"8x16:abcdefghijklmnopqrstuvwxyz",16,1);
-	OSTimeDlyHMSM(0, 0,1,0);
-	OLED_Clear(0);
-	GUI_ShowString(0,5,"6x8:ABCDEFGHIJKLMNOPQRSTUVWXYZ",8,1);
-	GUI_ShowString(0,25,"8x16:ABCDEFGHIJKLMNOPQRSTUVWXYZ",16,1);
-	OSTimeDlyHMSM(0, 0,1,0);
-	OLED_Clear(0);
-	GUI_Fill(0,0,WIDTH-1,HEIGHT/2-1,0);
-	GUI_ShowString(0,0,"6x8:!\"#$%&'()*+,-./:;<=>?@[]\\^_`~{}|",8,1);
-	OLED_Clear(0); 
-  GUI_ShowString(0,0,"8x16:!\"#$%&'()*+,-./:;<=>?@[]\\^_`~{}|",16,1);
-	GUI_ShowNum(40,32,1234567890,10,16,1);
-	OSTimeDlyHMSM(0, 0,1,0);
-	OLED_Clear(0);
-	GUI_Point(0,0,128,64,yize_image);
-	OSTimeDlyHMSM(0, 0,1,0);
+//	OLED_Clear(0);
+//	GUI_ShowString(0,5,"6x8:abcdefghijklmnopqrstuvwxyz",8,1);
+//	GUI_ShowString(0,25,"8x16:abcdefghijklmnopqrstuvwxyz",16,1);
+//	OSTimeDlyHMSM(0, 0,1,0);
+//	OLED_Clear(0);
+//	GUI_ShowString(0,5,"6x8:ABCDEFGHIJKLMNOPQRSTUVWXYZ",8,1);
+//	GUI_ShowString(0,25,"8x16:ABCDEFGHIJKLMNOPQRSTUVWXYZ",16,1);
+//	OSTimeDlyHMSM(0, 0,1,0);
+//	OLED_Clear(0);
+//	GUI_Fill(0,0,WIDTH-1,HEIGHT/2-1,0);
+//	GUI_ShowString(0,0,"6x8:!\"#$%&'()*+,-./:;<=>?@[]\\^_`~{}|",8,1);
+//	OLED_Clear(0); 
+//  GUI_ShowString(0,0,"8x16:!\"#$%&'()*+,-./:;<=>?@[]\\^_`~{}|",16,1);
+//	GUI_ShowNum(40,32,1234567890,10,16,1);
+//	OSTimeDlyHMSM(0, 0,1,0);
+//	OLED_Clear(0);
+//	GUI_Point(0,0,128,64,yize_image);
+//	OSTimeDlyHMSM(0, 0,1,0);
 }
