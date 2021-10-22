@@ -38,3 +38,4 @@
 .\main.o: GUIRGB.h
 .\main.o: ..\BSP\relay.h
 .\main.o: ..\BSP\W5500Process.h
+.\main.o: ..\BSP\DS1307.h

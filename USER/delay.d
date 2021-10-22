@@ -38,3 +38,4 @@
 .\delay.o: ..\USER\GUIRGB.h
 .\delay.o: ..\BSP\relay.h
 .\delay.o: ..\BSP\W5500Process.h
+.\delay.o: ..\BSP\DS1307.h

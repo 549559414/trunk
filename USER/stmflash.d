@@ -39,4 +39,5 @@
 .\stmflash.o: GUIRGB.h
 .\stmflash.o: ..\BSP\relay.h
 .\stmflash.o: ..\BSP\W5500Process.h
+.\stmflash.o: ..\BSP\DS1307.h
 .\stmflash.o: ..\FWlib\inc\stm32f10x_flash.h

@@ -27,6 +27,7 @@
 #include "GUIRGB.h"
 #include "relay.h"
 #include "W5500Process.h"
+#include "DS1307.h"
 
 
 #endif //__INCLUDES_H__

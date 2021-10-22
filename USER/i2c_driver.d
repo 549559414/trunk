@@ -38,3 +38,4 @@
 .\i2c_driver.o: GUIRGB.h
 .\i2c_driver.o: ..\BSP\relay.h
 .\i2c_driver.o: ..\BSP\W5500Process.h
+.\i2c_driver.o: ..\BSP\DS1307.h

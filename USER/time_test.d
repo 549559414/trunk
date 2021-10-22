@@ -38,4 +38,5 @@
 .\time_test.o: ..\USER\GUIRGB.h
 .\time_test.o: ..\BSP\relay.h
 .\time_test.o: ..\BSP\W5500Process.h
+.\time_test.o: ..\BSP\DS1307.h
 .\time_test.o: ..\FWlib\inc\stm32f10x_tim.h

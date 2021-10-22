@@ -38,3 +38,4 @@
 .\bsp.o: ..\USER\GUIRGB.h
 .\bsp.o: ..\BSP\relay.h
 .\bsp.o: ..\BSP\W5500Process.h
+.\bsp.o: ..\BSP\DS1307.h

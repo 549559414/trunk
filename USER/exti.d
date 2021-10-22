@@ -38,4 +38,5 @@
 .\exti.o: ..\USER\GUIRGB.h
 .\exti.o: ..\BSP\relay.h
 .\exti.o: ..\BSP\W5500Process.h
+.\exti.o: ..\BSP\DS1307.h
 .\exti.o: ..\BSP\exti.h

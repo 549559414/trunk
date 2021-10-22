@@ -38,4 +38,5 @@
 .\relay.o: ..\USER\GUIRGB.h
 .\relay.o: ..\BSP\relay.h
 .\relay.o: ..\BSP\W5500Process.h
+.\relay.o: ..\BSP\DS1307.h
 .\relay.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

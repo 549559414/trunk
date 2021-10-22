@@ -38,5 +38,6 @@
 .\gui.o: GUIRGB.h
 .\gui.o: ..\BSP\relay.h
 .\gui.o: ..\BSP\W5500Process.h
+.\gui.o: ..\BSP\DS1307.h
 .\gui.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 .\gui.o: ..\BSP\oledfont.h

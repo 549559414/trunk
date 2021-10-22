@@ -38,5 +38,6 @@
 .\oled.o: ..\USER\GUIRGB.h
 .\oled.o: ..\BSP\relay.h
 .\oled.o: ..\BSP\W5500Process.h
+.\oled.o: ..\BSP\DS1307.h
 .\oled.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 .\oled.o: ..\BSP\spi.h

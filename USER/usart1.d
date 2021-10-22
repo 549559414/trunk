@@ -38,5 +38,6 @@
 .\usart1.o: GUIRGB.h
 .\usart1.o: ..\BSP\relay.h
 .\usart1.o: ..\BSP\W5500Process.h
+.\usart1.o: ..\BSP\DS1307.h
 .\usart1.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 .\usart1.o: C:\Keil\ARM\ARMCC\bin\..\include\stdarg.h

@@ -38,4 +38,5 @@
 .\voice.o: ..\USER\GUIRGB.h
 .\voice.o: ..\BSP\relay.h
 .\voice.o: ..\BSP\W5500Process.h
+.\voice.o: ..\BSP\DS1307.h
 .\voice.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

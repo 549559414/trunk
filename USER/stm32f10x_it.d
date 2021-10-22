@@ -38,3 +38,4 @@
 .\stm32f10x_it.o: GUIRGB.h
 .\stm32f10x_it.o: ..\BSP\relay.h
 .\stm32f10x_it.o: ..\BSP\W5500Process.h
+.\stm32f10x_it.o: ..\BSP\DS1307.h

@@ -38,3 +38,4 @@
 .\ultrasonic.o: ..\USER\GUIRGB.h
 .\ultrasonic.o: ..\BSP\relay.h
 .\ultrasonic.o: ..\BSP\W5500Process.h
+.\ultrasonic.o: ..\BSP\DS1307.h
