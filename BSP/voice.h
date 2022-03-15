@@ -3,7 +3,7 @@
 
 #include "includes.h"
 
-#define USEHLK
+//#define USEHLK
 
 #define NONESWCOMMAND		0
 #define CALLBACKCOMMAND	1

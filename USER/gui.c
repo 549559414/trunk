@@ -896,6 +896,6 @@ void GUITest(void)
 //	GUI_ShowNum(40,32,1234567890,10,16,1);
 //	OSTimeDlyHMSM(0, 0,1,0);
 //	OLED_Clear(0);
-//	GUI_Point(0,0,128,64,yize_image);
+	GUI_Point(0,0,128,64,yize_image);
 //	OSTimeDlyHMSM(0, 0,1,0);
 }

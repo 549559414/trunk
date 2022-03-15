@@ -15,11 +15,6 @@
 
 #define I2C_PageSize  8  //24C02Ã¿Ò³8×Ö½Ú
 
-#define DS1307ADDR					0xD0
-
-#define NOCOMMAND			0x00
-#define GETCOMMAND		0x01
-
 
 void I2C_GPIO_Config(void);
 u8 I2C_Start(void);

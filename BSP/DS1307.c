@@ -65,7 +65,8 @@ u8 SetTime(void)
 }
 void TestDS1307(void)
 {
-	u8 showtime[5];
+	
+	u8 showtime[8];
 	Time_TypeDef ShowTime;
 	SetTime();
 	
@@ -74,8 +75,9 @@ void TestDS1307(void)
 	ShowTime.Minutes = DS1307Buf[1];
 	ShowTime.Hours   = DS1307Buf[2];
 	sprintf((char*)showtime,"%d%d:%d%d:%d%d",(ShowTime.Hours>>4)&0x03,ShowTime.Hours&0x0f,(ShowTime.Minutes>>4)&0x07,ShowTime.Minutes&0x0f,(ShowTime.Seconds>>4)&0x07,ShowTime.Seconds&0x0f);
-	OLED_Clear(0);
-	GUI_ShowString(40,0,showtime,8,1);
+	printf("%s",showtime);
+//	OLED_Clear(0);
+//	GUI_ShowString(40,0,showtime,8,1);
 }
 
 

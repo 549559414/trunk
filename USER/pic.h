@@ -63,7 +63,7 @@
 //自左至右
 //自顶至底
 //低位在前
-const unsigned char gImage_qq[3200] = {0x00};
+const unsigned char gImage_qq[1] = {0x00};
 //const unsigned char gImage_qq[3200] = { /* 0X00,0X10,0X28,0X00,0X28,0X00,0X01,0X1B, */
 //0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,0XFF,
 //0XFF,0XFF,0X7E,0XC7,0XCF,0XEE,0X10,0XF7,0X33,0XEF,0XDA,0XFF,0XFE,0XFF,0XFF,0XFF,

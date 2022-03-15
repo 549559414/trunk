@@ -62,19 +62,19 @@ void Load_Net_Parameters(void)
 
 //	S0_DIP[0]=192;//加载端口0的目的IP地址
 //	S0_DIP[1]=168;
-//	S0_DIP[2]=1;
-//	S0_DIP[3]=190;
+//	S0_DIP[2]=10;
+//	S0_DIP[3]=134;
 //	
 //	S0_DPort[0] = 0x17;//加载端口0的目的端口号6000
 //	S0_DPort[1] = 0x70;
 
-//	UDP_DIPR[0] = 192;	//UDP(广播)模式,目的主机IP地址
-//	UDP_DIPR[1] = 168;
-//	UDP_DIPR[2] = 1;
-//	UDP_DIPR[3] = 190;
+	UDP_DIPR[0] = 192;	//UDP(广播)模式,目的主机IP地址
+	UDP_DIPR[1] = 168;
+	UDP_DIPR[2] = 10;
+	UDP_DIPR[3] = 134;
 
-//	UDP_DPORT[0] = 0x17;	//UDP(广播)模式,目的主机端口号
-//	UDP_DPORT[1] = 0x70;
+	UDP_DPORT[0] = 0x17;	//UDP(广播)模式,目的主机端口号
+	UDP_DPORT[1] = 0x70;
 
 	S0_Mode=UDP_MODE;//加载端口0的工作模式,UDP模式
 }
@@ -141,8 +141,8 @@ void Process_Socket_Data(SOCKET s)
 
 	UDP_DPORT[0] = Rx_Buffer[4];
 	UDP_DPORT[1] = Rx_Buffer[5];
-	memcpy(Tx_Buffer, Rx_Buffer+8, size-8);			
-	Write_SOCK_Data_Buffer(s, Tx_Buffer, size);
+	memcpy(Tx_Buffer, Rx_Buffer+8, size-8);		
+	Write_SOCK_Data_Buffer(s, Tx_Buffer, size-8);
 }
 
 unsigned short Process_Socket_Data1(unsigned char *ch)
@@ -154,16 +154,15 @@ unsigned short Process_Socket_Data1(unsigned char *ch)
 	if((S0_Data & S_RECEIVE) == S_RECEIVE)//如果Socket0接收到数据
 	{
 			S0_Data&=~S_RECEIVE;
-			len=Read_SOCK_Data_Buffer(0, Rx_Buffer);
+			Process_Socket_Data(0);
+//			len=Read_SOCK_Data_Buffer(0, Rx_Buffer);
 	}
-	if(len == 0)
-		return 0;
-//	memcpy(ch, Rx_Buffer+7, 10);	
+//	if(len == 0)
+//		return 0;
 	len=10;
 	ch[0]=0;
 	memcpy(ch,Rx_Buffer+8,10);
-//	for(i=0;i<len;i++)
-//	UART1SendByte(ch[i]);
+
 	return len;
 }
 
@@ -188,12 +187,13 @@ void TestW5500(void)
 			Process_Socket_Data(0);//W5500接收并发送接收到的数据
 		}
 }
-void TestW5500TX(void)
+void TestW5500TX(unsigned char *ch,unsigned char len)
 {
 		if(S0_State == (S_INIT|S_CONN))
 		{
 			S0_Data&=~S_TRANSMITOK;
-			memcpy(Tx_Buffer, "\r\nGet msg\r\n", 27);
+			//memcpy(Tx_Buffer, ch, len);
+			memcpy(Tx_Buffer, "\r\nWelcome To ChaungWeiElec!\r\n", 27);
 			Write_SOCK_Data_Buffer(0, Tx_Buffer, 27);//指定Socket(0~7)发送数据处理,端口0发送27字节数据
 		}
 }
