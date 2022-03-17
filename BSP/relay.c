@@ -54,105 +54,115 @@ void TestRelay(void)
 	
 //	OSTimeDlyHMSM(0, 0,0,500); 
 }
-const u8 LSRelay0Open[]={0xAA,0xAA,0xAA,0x00,0x00,0x00,0x00,0xAA,0xAA,0xAA};
-const u8 LSRelay0Close[]={0xAA,0xAA,0xAA,0x00,0x00,0x00,0x01,0xAA,0xAA,0xAA};
-const u8 LSRelay1Open[]={0xAA,0xAA,0xAA,0x00,0x01,0x00,0x00,0xAA,0xAA,0xAA};
-const u8 LSRelay1Close[]={0xAA,0xAA,0xAA,0x00,0x01,0x00,0x01,0xAA,0xAA,0xAA};
-const u8 LSRelay2Open[]={0xAA,0xAA,0xAA,0x00,0x02,0x00,0x00,0xAA,0xAA,0xAA};
-const u8 LSRelay2Close[]={0xAA,0xAA,0xAA,0x00,0x02,0x00,0x01,0xAA,0xAA,0xAA};
-const u8 LSRelay3Open[]={0xAA,0xAA,0xAA,0x00,0x03,0x00,0x00,0xAA,0xAA,0xAA};
-const u8 LSRelay3Close[]={0xAA,0xAA,0xAA,0x00,0x03,0x00,0x01,0xAA,0xAA,0xAA};
+const u8 LSRelay0Open[]={0xAA,0xAA,0xAA,0x00,0x00,0x00,0x00,0xAA,0xAA,0xAA};				//继电器0开
+const u8 LSRelay0Close[]={0xAA,0xAA,0xAA,0x00,0x00,0x00,0x01,0xAA,0xAA,0xAA};				//继电器0关
+const u8 LSRelay1Open[]={0xAA,0xAA,0xAA,0x00,0x01,0x00,0x00,0xAA,0xAA,0xAA};				//继电器1开
+const u8 LSRelay1Close[]={0xAA,0xAA,0xAA,0x00,0x01,0x00,0x01,0xAA,0xAA,0xAA};				//继电器1关
+const u8 LSRelay2Open[]={0xAA,0xAA,0xAA,0x00,0x02,0x00,0x00,0xAA,0xAA,0xAA};				//继电器2开
+const u8 LSRelay2Close[]={0xAA,0xAA,0xAA,0x00,0x02,0x00,0x01,0xAA,0xAA,0xAA};				//继电器2关
+const u8 LSRelay3Open[]={0xAA,0xAA,0xAA,0x00,0x03,0x00,0x00,0xAA,0xAA,0xAA};				//继电器3开
+const u8 LSRelay3Close[]={0xAA,0xAA,0xAA,0x00,0x03,0x00,0x01,0xAA,0xAA,0xAA};				//继电器3关
 
-const u8 LSRelay0Open1Close[]={0xAA,0xAA,0xAA,0x00,0x04,0x00,0x00,0xAA,0xAA,0xAA};
-const u8 LSRelay0Close1Open[]={0xAA,0xAA,0xAA,0x00,0x04,0x00,0x01,0xAA,0xAA,0xAA};
-const u8 LSRelay0Close1Close[]={0xAA,0xAA,0xAA,0x00,0x04,0x00,0x02,0xAA,0xAA,0xAA};
-const u8 LSRelay2Open3Close[]={0xAA,0xAA,0xAA,0x00,0x05,0x00,0x00,0xAA,0xAA,0xAA};
-const u8 LSRelay2Close3Open[]={0xAA,0xAA,0xAA,0x00,0x05,0x00,0x01,0xAA,0xAA,0xAA};
-const u8 LSRelay2Close3Close[]={0xAA,0xAA,0xAA,0x00,0x05,0x00,0x02,0xAA,0xAA,0xAA};
+const u8 LSRelay0Open1Close[]={0xAA,0xAA,0xAA,0x00,0x04,0x00,0x00,0xAA,0xAA,0xAA};	//继电器0开1关
+const u8 LSRelay0Close1Open[]={0xAA,0xAA,0xAA,0x00,0x04,0x00,0x01,0xAA,0xAA,0xAA};	//继电器0关1开
+const u8 LSRelay0Close1Close[]={0xAA,0xAA,0xAA,0x00,0x04,0x00,0x02,0xAA,0xAA,0xAA};	//继电器0关1关
+const u8 LSRelay2Open3Close[]={0xAA,0xAA,0xAA,0x00,0x05,0x00,0x00,0xAA,0xAA,0xAA};	//继电器2开3关
+const u8 LSRelay2Close3Open[]={0xAA,0xAA,0xAA,0x00,0x05,0x00,0x01,0xAA,0xAA,0xAA};	//继电器2关3开
+const u8 LSRelay2Close3Close[]={0xAA,0xAA,0xAA,0x00,0x05,0x00,0x02,0xAA,0xAA,0xAA};	//继电器2关3关
 
+/*********************************************************
+*处理LS数据控制继电器开关的数据
+*                            
+*/
 u8 LSDate(void)
 {
-	u8 LSBuf[10],Commandstatus = 0xFF;
+	u8 LSBuf[LSLEN],Commandstatus = LSSTATUSINIT;
 	u16 uLen = 0;
 	memset(LSBuf,0,sizeof(LSBuf));
 	uLen = GetUsart1Buffer(LSBuf);
 
-	if(uLen != 10)
-		Commandstatus = 0xFF;
+	if(uLen != LSLEN)
+		Commandstatus = LSSTATUSINIT;
+		
 	if(memcmp((const char *)LSRelay0Open,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x00;
+		Commandstatus = LSRELAY0OPEN;
 	}
 	if(memcmp((const char *)LSRelay0Close,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x01;
+		Commandstatus = LSRELAY0CLOSE;
 	}
 	
 	if(memcmp((const char *)LSRelay1Open,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x10;
+		Commandstatus = LSRELAY1OPEN;
 	}
 	if(memcmp((const char *)LSRelay1Close,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x11;
+		Commandstatus = LSRELAY1CLOSE;
 	}
 	
 	if(memcmp((const char *)LSRelay2Open,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x20;
+		Commandstatus = LSRELAY2OPEN;
 	}
 	if(memcmp((const char *)LSRelay2Close,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x21;
+		Commandstatus = LSRELAY2CLOSE;
 	}
 	
 	if(memcmp((const char *)LSRelay3Open,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x30;
+		Commandstatus = LSRELAY3OPEN;
 	}
 	if(memcmp((const char *)LSRelay3Close,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x31;
+		Commandstatus = LSRELAY3CLOSE;
 	}
 	
 	if(memcmp((const char *)LSRelay0Open1Close,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x40;
+		Commandstatus = LSRELAY0OPEN1CLOSE;
 	}
 	
 	if(memcmp((const char *)LSRelay0Close1Open,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x41;
+		Commandstatus = LSRELAY0CLOSE1OPEN;
 	}
 	
 	if(memcmp((const char *)LSRelay0Close1Close,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x42;
+		Commandstatus = LSRELAY0CLOSE1CLOSE;
 	}
 	
 	if(memcmp((const char *)LSRelay2Open3Close,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x50;
+		Commandstatus = LSRELAY2OPEN3CLOSE;
 	}
 	
 	if(memcmp((const char *)LSRelay2Close3Open,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x51;
+		Commandstatus = LSRELAY2CLOSE3OPEN;
 	}
 	
 	if(memcmp((const char *)LSRelay2Close3Close,(const char *)LSBuf,10) == 0)
 	{
-		Commandstatus = 0x52;
+		Commandstatus = LSRELAY2CLOSE3CLOSE;
 	}
 	
 	return Commandstatus;
 }
 
+
+/*********************************************************
+*LS读取管脚的状态。
+*                            
+*/
 void LSReadRelayPin(void)
 {
-	u8 ReadPinA0 = 0xFF,ReadPinA1 = 0xFF,ReadPinA2 = 0xFF,ReadPinA3 = 0xFF;
-	u8 PinState[32];
-	memset(PinState,0,32);
+	u8 ReadPinA0 = LSIOINIT,ReadPinA1 = LSIOINIT,ReadPinA2 = LSIOINIT,ReadPinA3 = LSIOINIT;
+	u8 PinState[LSIOLEN];
+	memset(PinState,0,LSIOLEN);
 	ReadPinA0 = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4);
 	ReadPinA1 = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_5);
 	ReadPinA2 = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_6);
@@ -161,124 +171,142 @@ void LSReadRelayPin(void)
 	PinState[1] = ReadPinA1;
 	PinState[2] = ReadPinA2;
 	PinState[3] = ReadPinA3;
-	UART1SendDate(PinState,4);
+	UART1SendDate(PinState,LSIOLEN);
 //	sprintf((char*)PinState,"A0=%d,A1=%d,A2=%d,A3=%d\r\n",ReadPinA0,ReadPinA1,ReadPinA2,ReadPinA3);
 //	printf("%s",PinState);
 }
 
+/*********************************************************
+*控制LS的通断
+*                            
+*/
 void LSRelay(void)
 {
-	u8 Commandstatus = 0xFF;
+	u8 Commandstatus = LSSTATUSINIT;
 	Commandstatus = LSDate();
 	switch(Commandstatus)
 	{
-		case	0x00:	RELAYPIN0(ON);LSReadRelayPin();break;
-		case	0x01:	RELAYPIN0(OFF);LSReadRelayPin();break;
-		case	0x10:	RELAYPIN1(ON);LSReadRelayPin();break;
-		case	0x11:	RELAYPIN1(OFF);LSReadRelayPin();break;
-		case	0x20:	RELAYPIN2(ON);LSReadRelayPin();break;
-		case	0x21:	RELAYPIN2(OFF);LSReadRelayPin();break;
-		case	0x30:	RELAYPIN3(ON);LSReadRelayPin();break;
-		case	0x31:	RELAYPIN3(OFF);LSReadRelayPin();break;
-		case	0x40:	RELAYPIN0(ON);RELAYPIN1(OFF);LSReadRelayPin();break;
-		case	0x41:	RELAYPIN0(OFF);RELAYPIN1(ON);LSReadRelayPin();break;
-		case	0x42:	RELAYPIN0(OFF);RELAYPIN1(OFF);LSReadRelayPin();break;
-		case	0x50:	RELAYPIN2(ON);RELAYPIN3(OFF);LSReadRelayPin();break;
-		case	0x51:	RELAYPIN2(OFF);RELAYPIN3(ON);LSReadRelayPin();break;
-		case	0x52:	RELAYPIN2(OFF);RELAYPIN3(OFF);LSReadRelayPin();break;
-		
+		case	LSRELAY0OPEN:					RELAYPIN0(ON);LSReadRelayPin();break;
+		case	LSRELAY0CLOSE:				RELAYPIN0(OFF);LSReadRelayPin();break;
+		case	LSRELAY1OPEN:					RELAYPIN1(ON);LSReadRelayPin();break;
+		case	LSRELAY1CLOSE:				RELAYPIN1(OFF);LSReadRelayPin();break;
+		case	LSRELAY2OPEN:					RELAYPIN2(ON);LSReadRelayPin();break;
+		case	LSRELAY2CLOSE:				RELAYPIN2(OFF);LSReadRelayPin();break;
+		case	LSRELAY3OPEN:					RELAYPIN3(ON);LSReadRelayPin();break;
+		case	LSRELAY3CLOSE:				RELAYPIN3(OFF);LSReadRelayPin();break;
+		case	LSRELAY0OPEN1CLOSE:		RELAYPIN0(ON);RELAYPIN1(OFF);LSReadRelayPin();break;
+		case	LSRELAY0CLOSE1OPEN:		RELAYPIN0(OFF);RELAYPIN1(ON);LSReadRelayPin();break;
+		case	LSRELAY0CLOSE1CLOSE:	RELAYPIN0(OFF);RELAYPIN1(OFF);LSReadRelayPin();break;
+		case	LSRELAY2OPEN3CLOSE:		RELAYPIN2(ON);RELAYPIN3(OFF);LSReadRelayPin();break;
+		case	LSRELAY2CLOSE3OPEN:		RELAYPIN2(OFF);RELAYPIN3(ON);LSReadRelayPin();break;
+		case	LSRELAY2CLOSE3CLOSE:	RELAYPIN2(OFF);RELAYPIN3(OFF);LSReadRelayPin();break;
 		default: ;
 	}
 }
 
+/*********************************************************
+*PLC端IO的输出
+*                            
+*/
+void PLCDate(void)
+{
+	u8 PLCBuf[PLCIOLEN];
+	u16 uLen = 0;
+	memset(PLCBuf,0,sizeof(PLCBuf));
+	uLen = GetUsart1Buffer(PLCBuf);
+	
+	if(uLen != PLCIOLEN)
+		return;
+	
+	if(PLCBuf[PLCA0BIT] == PALOW)
+	{
+		RELAYPIN0(OFF);
+	}
+	if(PLCBuf[PLCA0BIT] == PAHIGH)
+	{
+		RELAYPIN0(ON);
+	}
+	
+	if(PLCBuf[PLCA1BIT] == PALOW)
+	{
+		RELAYPIN1(OFF);
+	}
+	if(PLCBuf[PLCA1BIT] == PAHIGH)
+	{
+		RELAYPIN1(ON);
+	}
+	
+	if(PLCBuf[PLCA2BIT] == PALOW)
+	{
+		RELAYPIN2(OFF);
+	}
+	if(PLCBuf[PLCA2BIT] == PAHIGH)
+	{
+		RELAYPIN2(ON);
+	}
+	
+	if(PLCBuf[PLCA3BIT] == PALOW)
+	{
+		RELAYPIN3(OFF);
+	}
+	if(PLCBuf[PLCA3BIT] == PAHIGH)
+	{
+		RELAYPIN3(ON);
+	}
+}
+
+/*********************************************************
+*PLC读取管脚的状态。
+*                            
+*/
 void PLCReadRelayPin(void)
 {
-	u8 ReadPinA0 = 0xFF,ReadPinA1 = 0xFF,ReadPinA2 = 0xFF,ReadPinA3 = 0xFF;
+	u8 ReadPinA0 = PLCIOINIT,ReadPinA1 = PLCIOINIT,ReadPinA2 = PLCIOINIT,ReadPinA3 = PLCIOINIT;
 	ReadPinA0 = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_4);
 	ReadPinA1 = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_5);
 	ReadPinA2 = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_6);
 	ReadPinA3 = GPIO_ReadInputDataBit(GPIOA,GPIO_Pin_7);
-	if(ReadPinA0 == 1 && ReadPinA1 == 0)
+	if(ReadPinA0 == PAHIGH && ReadPinA1 == PALOW)
 	{
-		UART1SendDate((U8*)LSRelay0Open1Close,10);
+		UART1SendDate((U8*)LSRelay0Open1Close,PLCLEN);
 		OSTimeDlyHMSM(0, 0,1,0);
 	}
 	
-	if(ReadPinA0 == 0 && ReadPinA1 == 1)
+	if(ReadPinA0 == PALOW && ReadPinA1 == PAHIGH)
 	{
-		UART1SendDate((U8*)LSRelay0Close1Open,10);
+		UART1SendDate((U8*)LSRelay0Close1Open,PLCLEN);
 		OSTimeDlyHMSM(0, 0,1,0);
 	}
 	
-	if(ReadPinA0 == 0 && ReadPinA1 == 0)
+	if(ReadPinA0 == PALOW && ReadPinA1 == PALOW)
 	{
-		UART1SendDate((U8*)LSRelay0Close1Close,10);
+		UART1SendDate((U8*)LSRelay0Close1Close,PLCLEN);
+		OSTimeDlyHMSM(0, 0,1,0);
+	}
+	PLCDate();
+	
+	if(ReadPinA2 == PAHIGH && ReadPinA3 == PALOW)
+	{
+		UART1SendDate((U8*)LSRelay2Open3Close,PLCLEN);
+		OSTimeDlyHMSM(0, 0,1,0);
+	}
+	if(ReadPinA2 == PALOW && ReadPinA3 == PAHIGH)
+	{
+		UART1SendDate((U8*)LSRelay2Close3Open,PLCLEN);
 		OSTimeDlyHMSM(0, 0,1,0);
 	}
 	
-	if(ReadPinA2 == 1 && ReadPinA3 == 0)
+	if(ReadPinA2 == PALOW && ReadPinA3 == PALOW)
 	{
-		UART1SendDate((U8*)LSRelay2Open3Close,10);
+		UART1SendDate((U8*)LSRelay2Close3Close,PLCLEN);
 		OSTimeDlyHMSM(0, 0,1,0);
 	}
-	if(ReadPinA2 == 0 && ReadPinA3 == 1)
-	{
-		UART1SendDate((U8*)LSRelay2Close3Open,10);
-		OSTimeDlyHMSM(0, 0,1,0);
-	}
-	
-	if(ReadPinA2 == 0 && ReadPinA3 == 0)
-	{
-		UART1SendDate((U8*)LSRelay2Close3Close,10);
-		OSTimeDlyHMSM(0, 0,1,0);
-	}
+	PLCDate();
 }
-void PLCDate(void)
-{
-	u8 PLCBuf[32];
-	u16 uLen = 0;
-	memset(PLCBuf,0,sizeof(PLCBuf));
-	uLen = GetUsart1Buffer(PLCBuf);
-	if(uLen != 10)
-	{
-		return ;
-	}
-	
-	if(memcmp((const char *)LSRelay0Open1Close,(const char *)PLCBuf,10) == 0)
-	{
-		RELAYPIN0(ON);RELAYPIN1(OFF);
-	}
-	
-	if(memcmp((const char *)LSRelay0Close1Open,(const char *)PLCBuf,10) == 0)
-	{
-		RELAYPIN0(OFF);RELAYPIN1(ON);
-	}
-	
-	if(memcmp((const char *)LSRelay0Close1Close,(const char *)PLCBuf,10) == 0)
-	{
-		RELAYPIN0(OFF);RELAYPIN1(OFF);
-	}
-	
-	if(memcmp((const char *)LSRelay2Open3Close,(const char *)PLCBuf,10) == 0)
-	{
-		RELAYPIN2(ON);RELAYPIN3(OFF);
-	}
-	
-	if(memcmp((const char *)LSRelay2Close3Open,(const char *)PLCBuf,10) == 0)
-	{
-		RELAYPIN2(OFF);RELAYPIN3(ON);
-	}
-	
-	if(memcmp((const char *)LSRelay2Close3Close,(const char *)PLCBuf,10) == 0)
-	{
-		RELAYPIN2(OFF);RELAYPIN3(OFF);
-	}
-	
-}
+
 
 void PLCRelay(void)
 {
 	PLCReadRelayPin();
-	PLCDate();
 }
 

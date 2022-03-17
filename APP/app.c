@@ -30,7 +30,7 @@ void Task_LED2(void *p_arg)
     {
 			LED1( ON );
 			OSTimeDlyHMSM(0, 0,1,0); 
-      LED1( OFF);   
+      LED1( OFF);
 			OSTimeDlyHMSM(0, 0,1,0); 
 //			Motor();
 //			FlashTest();				//ÄÚ²¿flash²âÊÔ³ÌÐò
