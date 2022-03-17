@@ -10,7 +10,8 @@ void BSP_Init(void)
 {
     SystemInit();		/* 配置系统时钟为72M */	
     LED_GPIO_Config();  /* LED 端口初始化 */
-//		USART1_Config(); //USART1 配置 	
+		Relay_Pin_Config();//继电器管角初始化
+		USART1_Config(); //USART1 配置 	
 		
 		delay_init();
 
@@ -31,7 +32,7 @@ void BSP_Init(void)
 //		I2C_GPIO_Config();//硬件IIC有问题使用模拟IIC
 		
 		/*网口驱动*/
-		W5500Pro_Initialization();
+		//W5500Pro_Initialization();
 		
 		/**********/
 }

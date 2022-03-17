@@ -11,4 +11,5 @@ void UART1Test(void);
 void Echo(void);
 void Debug(const char *ch,U8 Level);
 u16 GetUsart1Buffer(u8* ch);
+void UART1SendDate(U8 *ch,U16 len);
 #endif /* __USART1_H */

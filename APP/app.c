@@ -11,11 +11,11 @@ void Task_Start(void *p_arg)
 	   &task_led2_stk[TASK_LED2_STK_SIZE-1], TASK_LED2_PRIO); 	
     while (1)
     {
-				LED1( ON );
-				OSTimeDlyHMSM(0, 0,1,0); 
-        LED1( OFF);   
-				OSTimeDlyHMSM(0, 0,1,0); 
-				printf("test\r\n");
+				
+//				LSRelay();
+				OSTimeDlyHMSM(0, 0,1,0);
+				PLCRelay();
+//				printf("test\r\n");
 //				TestRelay();
 //				OSTimeDlyHMSM(0, 0,0,500); 
     }
@@ -28,6 +28,10 @@ void Task_LED2(void *p_arg)
 		SysTick_init();
     while (1)
     {
+			LED1( ON );
+			OSTimeDlyHMSM(0, 0,1,0); 
+      LED1( OFF);   
+			OSTimeDlyHMSM(0, 0,1,0); 
 //			Motor();
 //			FlashTest();				//内部flash测试程序
 			#ifdef	LCDRGB			//使用彩屏

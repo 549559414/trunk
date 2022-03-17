@@ -48,7 +48,7 @@ void USART1_Config(void)
   
    //USART 初始化设置
 
-	USART_InitStructure.USART_BaudRate = 115200;//串口波特率
+	USART_InitStructure.USART_BaudRate = 9600;//串口波特率
 	USART_InitStructure.USART_WordLength = USART_WordLength_8b;//字长为8位数据格式
 	USART_InitStructure.USART_StopBits = USART_StopBits_1;//一个停止位
 	USART_InitStructure.USART_Parity = USART_Parity_No;//无奇偶校验位
@@ -104,6 +104,15 @@ void UART1SendString(void)
 	memset(Buf,0,sizeof(Buf));
 }
 
+void UART1SendDate(U8 *ch,U16 len)
+{
+	U16 i;
+	for(i=0;i<len;i++)
+	{
+		UART1SendByte(ch[i]);
+	}
+}
+
 /*printf函数的重定向*/
 int fputc(int ch,FILE *f)
 {
@@ -125,7 +134,7 @@ u16 GetUsart1Buffer(u8* ch)
 	{
 		ch[i] = Buf[i];
 	}
-	memset(Buf,0,sizeof(Buf));
+	memset(Buf,0,MAX_LENGTH);
 	tmp = Count;
 	Count = 0;
 	return tmp;

@@ -14,6 +14,24 @@
 					GPIO_SetBits(GPIOC,GPIO_Pin_13);\
 					else		\
 					GPIO_ResetBits(GPIOC,GPIO_Pin_13)
+					
+#define RELAYPIN0(a)	if (a)	\
+					GPIO_SetBits(GPIOA,GPIO_Pin_0);\
+					else		\
+					GPIO_ResetBits(GPIOA,GPIO_Pin_0)
+#define RELAYPIN1(a)	if (a)	\
+					GPIO_SetBits(GPIOA,GPIO_Pin_1);\
+					else		\
+					GPIO_ResetBits(GPIOA,GPIO_Pin_1)
+#define RELAYPIN2(a)	if (a)	\
+					GPIO_SetBits(GPIOA,GPIO_Pin_2);\
+					else		\
+					GPIO_ResetBits(GPIOA,GPIO_Pin_2)
+#define RELAYPIN3(a)	if (a)	\
+					GPIO_SetBits(GPIOA,GPIO_Pin_3);\
+					else		\
+					GPIO_ResetBits(GPIOA,GPIO_Pin_3)
+					
 
 //#define LED2(a)	if (a)	\
 //					GPIO_SetBits(GPIOB,GPIO_Pin_14);\
@@ -22,5 +40,6 @@
 
 
 void LED_GPIO_Config(void);
+void Relay_Pin_Config(void);
 
 #endif /* __LED_H */

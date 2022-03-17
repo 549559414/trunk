@@ -39,7 +39,8 @@ enum{
 };
 u8 RelayCommand(void);
 void TestRelay(void);				
-
+void LSRelay(void);
+void PLCRelay(void);
 
 #endif
 

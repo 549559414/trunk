@@ -39,3 +39,29 @@ void LED_GPIO_Config(void)
 //	GPIO_SetBits(GPIOB, GPIO_Pin_14 );	 // 关闭所有LED
 //	GPIO_SetBits(GPIOB, GPIO_Pin_15 );	 // 关闭所有LED
 }
+
+void Relay_Pin_Config(void)
+{
+	GPIO_InitTypeDef GPIO_InitStructure;
+	RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA, ENABLE); // 使能PB端口时钟  
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3;	
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;       
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);  //初始化PB端口
+	
+	GPIO_SetBits(GPIOB, GPIO_Pin_0);	 // 关闭所有LED
+	GPIO_SetBits(GPIOB, GPIO_Pin_1 );	 // 关闭所有LED
+	GPIO_SetBits(GPIOB, GPIO_Pin_2 );	 // 关闭所有LED
+	GPIO_SetBits(GPIOB, GPIO_Pin_3 );	 // 关闭所有LED
+	
+	RCC_APB2PeriphClockCmd( RCC_APB2Periph_GPIOA, ENABLE); // 使能PB端口时钟  
+  GPIO_InitStructure.GPIO_Pin = GPIO_Pin_4|GPIO_Pin_5|GPIO_Pin_6|GPIO_Pin_7;	
+  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IPD;       
+  GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+  GPIO_Init(GPIOA, &GPIO_InitStructure);  //初始化PB端口
+	
+	GPIO_ResetBits(GPIOB, GPIO_Pin_4);	 // 关闭所有LED
+	GPIO_ResetBits(GPIOB, GPIO_Pin_5 );	 // 关闭所有LED
+	GPIO_ResetBits(GPIOB, GPIO_Pin_6 );	 // 关闭所有LED
+	GPIO_ResetBits(GPIOB, GPIO_Pin_7 );	 // 关闭所有LED
+}
