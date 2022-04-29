@@ -20,13 +20,12 @@
 .\oled.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\oled.o: ..\USER\type32.h
 .\oled.o: ..\USER\I2C_Driver.h
-.\oled.o: ..\USER\stmflash.h
-.\oled.o: ..\USER\includes.h
 .\oled.o: ..\BSP\oled.h
 .\oled.o: ..\USER\gui.h
 .\oled.o: ..\SYSTEM\delay.h
 .\oled.o: ..\SYSTEM\sys.h
 .\oled.o: ..\BSP\voice.h
+.\oled.o: ..\USER\includes.h
 .\oled.o: ..\BSP\exti.h
 .\oled.o: ..\FWlib\inc\stm32f10x_exti.h
 .\oled.o: ..\FWlib\inc\misc.h
@@ -39,5 +38,6 @@
 .\oled.o: ..\BSP\relay.h
 .\oled.o: ..\BSP\W5500Process.h
 .\oled.o: ..\BSP\DS1307.h
+.\oled.o: ..\BSP\flash.h
 .\oled.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 .\oled.o: ..\BSP\spi.h

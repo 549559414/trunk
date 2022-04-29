@@ -20,13 +20,12 @@
 .\usart1.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\usart1.o: type32.h
 .\usart1.o: I2C_Driver.h
-.\usart1.o: stmflash.h
-.\usart1.o: includes.h
 .\usart1.o: ..\BSP\oled.h
 .\usart1.o: gui.h
 .\usart1.o: ..\SYSTEM\delay.h
 .\usart1.o: ..\SYSTEM\sys.h
 .\usart1.o: ..\BSP\voice.h
+.\usart1.o: ..\USER\includes.h
 .\usart1.o: ..\BSP\exti.h
 .\usart1.o: ..\FWlib\inc\stm32f10x_exti.h
 .\usart1.o: ..\FWlib\inc\misc.h
@@ -39,5 +38,6 @@
 .\usart1.o: ..\BSP\relay.h
 .\usart1.o: ..\BSP\W5500Process.h
 .\usart1.o: ..\BSP\DS1307.h
+.\usart1.o: ..\BSP\flash.h
 .\usart1.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h
 .\usart1.o: C:\Keil\ARM\ARMCC\bin\..\include\stdarg.h

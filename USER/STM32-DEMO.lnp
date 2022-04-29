@@ -45,6 +45,7 @@
 ".\w5500.o"
 ".\w5500process.o"
 ".\ds1307.o"
+".\flash.o"
 ".\app.o"
 ".\os_core.o"
 ".\os_flag.o"

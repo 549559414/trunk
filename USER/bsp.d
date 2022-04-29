@@ -20,13 +20,12 @@
 .\bsp.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\bsp.o: ..\USER\type32.h
 .\bsp.o: ..\USER\I2C_Driver.h
-.\bsp.o: ..\USER\stmflash.h
-.\bsp.o: ..\USER\includes.h
 .\bsp.o: ..\BSP\oled.h
 .\bsp.o: ..\USER\gui.h
 .\bsp.o: ..\SYSTEM\delay.h
 .\bsp.o: ..\SYSTEM\sys.h
 .\bsp.o: ..\BSP\voice.h
+.\bsp.o: ..\USER\includes.h
 .\bsp.o: ..\BSP\exti.h
 .\bsp.o: ..\FWlib\inc\stm32f10x_exti.h
 .\bsp.o: ..\FWlib\inc\misc.h
@@ -39,3 +38,4 @@
 .\bsp.o: ..\BSP\relay.h
 .\bsp.o: ..\BSP\W5500Process.h
 .\bsp.o: ..\BSP\DS1307.h
+.\bsp.o: ..\BSP\flash.h

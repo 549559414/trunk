@@ -14,7 +14,7 @@
 #include  "stm32f10x_gpio.h"
 #include  "I2C_Driver.h"
 #include  "usart1.h"
-#include "stmflash.h"
+//#include "stmflash.h"
 #include "oled.h"
 #include "gui.h"
 #include "delay.h"
@@ -28,6 +28,7 @@
 #include "relay.h"
 #include "W5500Process.h"
 #include "DS1307.h"
+#include "flash.h"
 
 
 #endif //__INCLUDES_H__

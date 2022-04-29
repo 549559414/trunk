@@ -9,9 +9,9 @@
 #define CLOSEREALY 1
 
 #define RealySW(a)	if (a)	\
-					GPIO_SetBits(GPIOC,GPIO_Pin_13);\
+					GPIO_SetBits(GPIOC,GPIO_Pin_14);\
 					else		\
-					GPIO_ResetBits(GPIOC,GPIO_Pin_13)
+					GPIO_ResetBits(GPIOC,GPIO_Pin_14)
 #define RealySW_2(a)	if (a)	\
 					GPIO_SetBits(GPIOB,GPIO_Pin_5);\
 					else		\
@@ -35,7 +35,7 @@ enum{
 	REALYOPEN_3,
 	REALYCLOSE_3,
 	REALYOPEN_4,
-	REALYCLOSE_4
+	REALYCLOSE_4,
 };
 
 #define	LSSTATUSINIT		0xFF		

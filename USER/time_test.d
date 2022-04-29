@@ -20,13 +20,12 @@
 .\time_test.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\time_test.o: ..\USER\type32.h
 .\time_test.o: ..\USER\I2C_Driver.h
-.\time_test.o: ..\USER\stmflash.h
-.\time_test.o: ..\USER\includes.h
 .\time_test.o: ..\BSP\oled.h
 .\time_test.o: ..\USER\gui.h
 .\time_test.o: ..\SYSTEM\delay.h
 .\time_test.o: ..\SYSTEM\sys.h
 .\time_test.o: ..\BSP\voice.h
+.\time_test.o: ..\USER\includes.h
 .\time_test.o: ..\BSP\exti.h
 .\time_test.o: ..\FWlib\inc\stm32f10x_exti.h
 .\time_test.o: ..\FWlib\inc\misc.h
@@ -39,4 +38,5 @@
 .\time_test.o: ..\BSP\relay.h
 .\time_test.o: ..\BSP\W5500Process.h
 .\time_test.o: ..\BSP\DS1307.h
+.\time_test.o: ..\BSP\flash.h
 .\time_test.o: ..\FWlib\inc\stm32f10x_tim.h

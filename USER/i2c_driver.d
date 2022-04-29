@@ -20,13 +20,12 @@
 .\i2c_driver.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\i2c_driver.o: type32.h
 .\i2c_driver.o: I2C_Driver.h
-.\i2c_driver.o: stmflash.h
-.\i2c_driver.o: includes.h
 .\i2c_driver.o: ..\BSP\oled.h
 .\i2c_driver.o: gui.h
 .\i2c_driver.o: ..\SYSTEM\delay.h
 .\i2c_driver.o: ..\SYSTEM\sys.h
 .\i2c_driver.o: ..\BSP\voice.h
+.\i2c_driver.o: ..\USER\includes.h
 .\i2c_driver.o: ..\BSP\exti.h
 .\i2c_driver.o: ..\FWlib\inc\stm32f10x_exti.h
 .\i2c_driver.o: ..\FWlib\inc\misc.h
@@ -39,3 +38,4 @@
 .\i2c_driver.o: ..\BSP\relay.h
 .\i2c_driver.o: ..\BSP\W5500Process.h
 .\i2c_driver.o: ..\BSP\DS1307.h
+.\i2c_driver.o: ..\BSP\flash.h

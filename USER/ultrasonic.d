@@ -20,13 +20,12 @@
 .\ultrasonic.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\ultrasonic.o: ..\USER\type32.h
 .\ultrasonic.o: ..\USER\I2C_Driver.h
-.\ultrasonic.o: ..\USER\stmflash.h
-.\ultrasonic.o: ..\USER\includes.h
 .\ultrasonic.o: ..\BSP\oled.h
 .\ultrasonic.o: ..\USER\gui.h
 .\ultrasonic.o: ..\SYSTEM\delay.h
 .\ultrasonic.o: ..\SYSTEM\sys.h
 .\ultrasonic.o: ..\BSP\voice.h
+.\ultrasonic.o: ..\USER\includes.h
 .\ultrasonic.o: ..\BSP\exti.h
 .\ultrasonic.o: ..\FWlib\inc\stm32f10x_exti.h
 .\ultrasonic.o: ..\FWlib\inc\misc.h
@@ -39,3 +38,4 @@
 .\ultrasonic.o: ..\BSP\relay.h
 .\ultrasonic.o: ..\BSP\W5500Process.h
 .\ultrasonic.o: ..\BSP\DS1307.h
+.\ultrasonic.o: ..\BSP\flash.h

@@ -24,7 +24,7 @@ void W5500_Initialization(void)
 	Detect_Gateway();	//检查网关服务器 
 	Socket_Init(0);		//指定Socket(0~7)初始化,初始化端口0
 }
-
+extern unsigned char IPInit[4],GWInit[4],MSInit[4];
 /*******************************************************************************
 * 函数名  : Load_Net_Parameters
 * 描述    : 装载网络参数
@@ -35,15 +35,15 @@ void W5500_Initialization(void)
 *******************************************************************************/
 void Load_Net_Parameters(void)
 {
-	Gateway_IP[0] = 192;//加载网关参数
-	Gateway_IP[1] = 168;
-	Gateway_IP[2] = 10;
-	Gateway_IP[3] = 1;
+	Gateway_IP[0] = GWInit[0];//192;//加载网关参数
+	Gateway_IP[1] = GWInit[1];//168;
+	Gateway_IP[2] = GWInit[2];//10;
+	Gateway_IP[3] = GWInit[3];//1;
 
-	Sub_Mask[0]=255;//加载子网掩码
-	Sub_Mask[1]=255;
-	Sub_Mask[2]=255;
-	Sub_Mask[3]=0;
+	Sub_Mask[0]=MSInit[0];//255;//加载子网掩码
+	Sub_Mask[1]=MSInit[1];//255;
+	Sub_Mask[2]=MSInit[2];//255;
+	Sub_Mask[3]=MSInit[3];//0;
 
 	Phy_Addr[0]=0x0c;//加载物理地址
 	Phy_Addr[1]=0x29;
@@ -52,10 +52,10 @@ void Load_Net_Parameters(void)
 	Phy_Addr[4]=0x00;
 	Phy_Addr[5]=0x01;
 
-	IP_Addr[0]=192;//加载本机IP地址
-	IP_Addr[1]=168;
-	IP_Addr[2]=10;
-	IP_Addr[3]=199;
+	IP_Addr[0]=IPInit[0];//192;//加载本机IP地址
+	IP_Addr[1]=IPInit[1];//168;
+	IP_Addr[2]=IPInit[2];//10;
+	IP_Addr[3]=IPInit[3];//199;
 
 	S0_Port[0] = 0x13;//加载端口0的端口号5000 
 	S0_Port[1] = 0x88;
@@ -68,13 +68,13 @@ void Load_Net_Parameters(void)
 //	S0_DPort[0] = 0x17;//加载端口0的目的端口号6000
 //	S0_DPort[1] = 0x70;
 
-	UDP_DIPR[0] = 192;	//UDP(广播)模式,目的主机IP地址
-	UDP_DIPR[1] = 168;
-	UDP_DIPR[2] = 10;
-	UDP_DIPR[3] = 134;
+//	UDP_DIPR[0] = 192;	//UDP(广播)模式,目的主机IP地址
+//	UDP_DIPR[1] = 168;
+//	UDP_DIPR[2] = 10;
+//	UDP_DIPR[3] = 134;
 
-	UDP_DPORT[0] = 0x17;	//UDP(广播)模式,目的主机端口号
-	UDP_DPORT[1] = 0x70;
+//	UDP_DPORT[0] = 0x17;	//UDP(广播)模式,目的主机端口号
+//	UDP_DPORT[1] = 0x70;
 
 	S0_Mode=UDP_MODE;//加载端口0的工作模式,UDP模式
 }
@@ -141,8 +141,9 @@ void Process_Socket_Data(SOCKET s)
 
 	UDP_DPORT[0] = Rx_Buffer[4];
 	UDP_DPORT[1] = Rx_Buffer[5];
-	memcpy(Tx_Buffer, Rx_Buffer+8, size-8);		
-	Write_SOCK_Data_Buffer(s, Tx_Buffer, size-8);
+	memcpy(Tx_Buffer, Rx_Buffer+8, size-8);	
+	Tx_Buffer_Len=size-8;	
+//	Write_SOCK_Data_Buffer(s, Tx_Buffer, size-8);
 }
 
 unsigned short Process_Socket_Data1(unsigned char *ch)
@@ -162,7 +163,7 @@ unsigned short Process_Socket_Data1(unsigned char *ch)
 	len=10;
 	ch[0]=0;
 	memcpy(ch,Rx_Buffer+8,10);
-
+//	memset(Rx_Buffer,0,18);
 	return len;
 }
 
@@ -187,14 +188,24 @@ void TestW5500(void)
 			Process_Socket_Data(0);//W5500接收并发送接收到的数据
 		}
 }
-void TestW5500TX(unsigned char *ch,unsigned char len)
+void TestW5500TX(void)
 {
 		if(S0_State == (S_INIT|S_CONN))
 		{
 			S0_Data&=~S_TRANSMITOK;
 			//memcpy(Tx_Buffer, ch, len);
-			memcpy(Tx_Buffer, "\r\nWelcome To ChaungWeiElec!\r\n", 27);
-			Write_SOCK_Data_Buffer(0, Tx_Buffer, 27);//指定Socket(0~7)发送数据处理,端口0发送27字节数据
+//			memcpy(Tx_Buffer, "\r\nWelcome To ChaungWeiElec!\r\n", 27);
+			memcpy(Tx_Buffer, Rx_Buffer+8, Tx_Buffer_Len);	
+			Write_SOCK_Data_Buffer(0, Tx_Buffer, Tx_Buffer_Len);//指定Socket(0~7)发送数据处理,端口0发送27字节数据
+		}
+}
+void DebugTx(unsigned char *buf,unsigned int len)
+{
+		TestW5500();
+		if(S0_State == (S_INIT|S_CONN))
+		{
+			S0_Data&=~S_TRANSMITOK;
+			Write_SOCK_Data_Buffer(0, buf, len);//指定Socket(0~7)发送数据处理,端口0发送27字节数据
 		}
 }
 

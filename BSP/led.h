@@ -40,6 +40,7 @@
 
 
 void LED_GPIO_Config(void);
+void ChangeMode(void);
 void Relay_Pin_Config(void);
 
 #endif /* __LED_H */

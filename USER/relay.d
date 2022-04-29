@@ -20,13 +20,12 @@
 .\relay.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\relay.o: ..\USER\type32.h
 .\relay.o: ..\USER\I2C_Driver.h
-.\relay.o: ..\USER\stmflash.h
-.\relay.o: ..\USER\includes.h
 .\relay.o: ..\BSP\oled.h
 .\relay.o: ..\USER\gui.h
 .\relay.o: ..\SYSTEM\delay.h
 .\relay.o: ..\SYSTEM\sys.h
 .\relay.o: ..\BSP\voice.h
+.\relay.o: ..\USER\includes.h
 .\relay.o: ..\BSP\exti.h
 .\relay.o: ..\FWlib\inc\stm32f10x_exti.h
 .\relay.o: ..\FWlib\inc\misc.h
@@ -39,4 +38,6 @@
 .\relay.o: ..\BSP\relay.h
 .\relay.o: ..\BSP\W5500Process.h
 .\relay.o: ..\BSP\DS1307.h
+.\relay.o: ..\BSP\flash.h
+.\relay.o: ..\USER\stmflash.h
 .\relay.o: C:\Keil\ARM\ARMCC\bin\..\include\string.h

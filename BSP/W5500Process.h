@@ -9,10 +9,9 @@ void W5500_Socket_Set(void);
 void Process_Socket_Data(unsigned char s);
 void W5500Pro_Initialization(void);
 void TestW5500(void);
-void TestW5500TX(unsigned char *ch,unsigned char len);
+void TestW5500TX(void);
 unsigned short Process_Socket_Data1(unsigned char *ch);
-
-
+void DebugTx(unsigned char *buf,unsigned int len);
 
 #endif
 

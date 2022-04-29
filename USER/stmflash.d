@@ -21,7 +21,6 @@
 .\stmflash.o: C:\Keil\ARM\ARMCC\bin\..\include\stdio.h
 .\stmflash.o: type32.h
 .\stmflash.o: I2C_Driver.h
-.\stmflash.o: stmflash.h
 .\stmflash.o: ..\BSP\oled.h
 .\stmflash.o: gui.h
 .\stmflash.o: ..\SYSTEM\delay.h
@@ -40,4 +39,5 @@
 .\stmflash.o: ..\BSP\relay.h
 .\stmflash.o: ..\BSP\W5500Process.h
 .\stmflash.o: ..\BSP\DS1307.h
+.\stmflash.o: ..\BSP\flash.h
 .\stmflash.o: ..\FWlib\inc\stm32f10x_flash.h

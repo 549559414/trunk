@@ -49,6 +49,7 @@ SET CPU_CLOCK=0x007A1200
 "C:\Keil\ARM\ARMCC\bin\ArmCC" --Via ".\w5500.__i"
 "C:\Keil\ARM\ARMCC\bin\ArmCC" --Via ".\w5500process.__i"
 "C:\Keil\ARM\ARMCC\bin\ArmCC" --Via ".\ds1307.__i"
+"C:\Keil\ARM\ARMCC\bin\ArmCC" --Via ".\flash.__i"
 "C:\Keil\ARM\ARMCC\bin\ArmCC" --Via ".\app.__i"
 "C:\Keil\ARM\ARMCC\bin\ArmCC" --Via ".\os_core.__i"
 "C:\Keil\ARM\ARMCC\bin\ArmCC" --Via ".\os_flag.__i"

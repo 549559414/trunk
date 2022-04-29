@@ -213,14 +213,13 @@ FLASH_Status FLASH_ErasePage(uint32_t Page_Address)
   assert_param(IS_FLASH_ADDRESS(Page_Address));
   /* Wait for last operation to be completed */
   status = FLASH_WaitForLastOperation(EraseTimeout);
-  
+	
   if(status == FLASH_COMPLETE)
   { 
     /* if the previous operation is completed, proceed to erase the page */
     FLASH->CR|= CR_PER_Set;
     FLASH->AR = Page_Address; 
     FLASH->CR|= CR_STRT_Set;
-    
     /* Wait for last operation to be completed */
     status = FLASH_WaitForLastOperation(EraseTimeout);
     if(status != FLASH_BUSY)
