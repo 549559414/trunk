@@ -163,7 +163,7 @@ unsigned short Process_Socket_Data1(unsigned char *ch)
 	len=10;
 	ch[0]=0;
 	memcpy(ch,Rx_Buffer+8,10);
-//	memset(Rx_Buffer,0,18);
+	memset(Rx_Buffer,0,18);
 	return len;
 }
 

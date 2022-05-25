@@ -18,7 +18,7 @@ void Task_Start(void *p_arg)
 				/*lora项目*/
 //				PLCRelay();			//PLC端
 			/*远程控制项目*/
-			if(ModePin == 0)
+			if(ModePin == PINLOW)
 			{
 					TestRelay();		//远程控制开关
 			}
@@ -37,7 +37,7 @@ void Task_LED2(void *p_arg)
       LED1( OFF);
 			OSTimeDlyHMSM(0, 0,0,500); 
 			/*lora项目*/
-			if(ModePin == 1)
+			if(ModePin == PINHIGH)
 				TestFlash();
 //			Motor();
 //			FlashTest();				//内部flash测试程序

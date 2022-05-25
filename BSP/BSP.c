@@ -37,7 +37,7 @@ void BSP_Init(void)
 		/*远程项目中用于设置IP*/
 		ChangeMode();
 		ModePin = GPIO_ReadInputDataBit(GPIOB,GPIO_Pin_0);
-		if(ModePin == 1)
+		if(ModePin == PINHIGH)
 		{
 			USART1_Config(); //USART1 配置 	
 			printf("串口配置IP\r\n");

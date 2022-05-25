@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\STM32-DEMO.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\STM32-DEMO.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Fri Apr 29 15:37:52 2022
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Wed May 25 18:02:28 2022
 <BR><P>
 <H3>Maximum Stack Usage =        240 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -1182,8 +1182,8 @@ Global Symbols
 <LI><a href="#[e2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_LED2
 </UL>
 
-<P><STRONG><a name="[92]"></a>LED_GPIO_Config</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, led.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = LED_GPIO_Config &rArr; GPIO_Init
+<P><STRONG><a name="[92]"></a>LED_GPIO_Config</STRONG> (Thumb, 114 bytes, Stack size 24 bytes, led.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = LED_GPIO_Config &rArr; GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[57]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RCC_APB2PeriphClockCmd
@@ -1232,7 +1232,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f10x_hd.o(RESET)
 </UL>
-<P><STRONG><a name="[9e]"></a>RelayCommand</STRONG> (Thumb, 86 bytes, Stack size 24 bytes, relay.o(.text))
+<P><STRONG><a name="[9e]"></a>RelayCommand</STRONG> (Thumb, 298 bytes, Stack size 24 bytes, relay.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 144 + Unknown Stack Size
 <LI>Call Chain = RelayCommand &rArr; DebugTx &rArr; TestW5500 &rArr; Process_Socket_Data &rArr; Read_SOCK_Data_Buffer &rArr; Write_W5500_SOCK_2Byte &rArr; SPI1_Send_Short &rArr; SPI1_Send_Byte
 </UL>
@@ -1243,7 +1243,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TestRelay
 </UL>
 
-<P><STRONG><a name="[a2]"></a>TestRelay</STRONG> (Thumb, 42 bytes, Stack size 8 bytes, relay.o(.text))
+<P><STRONG><a name="[a2]"></a>TestRelay</STRONG> (Thumb, 88 bytes, Stack size 8 bytes, relay.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152 + Unknown Stack Size
 <LI>Call Chain = TestRelay &rArr; RelayCommand &rArr; DebugTx &rArr; TestW5500 &rArr; Process_Socket_Data &rArr; Read_SOCK_Data_Buffer &rArr; Write_W5500_SOCK_2Byte &rArr; SPI1_Send_Short &rArr; SPI1_Send_Byte
 </UL>
@@ -1275,7 +1275,7 @@ Global Symbols
 <LI><a href="#[a3]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LSDate
 </UL>
 
-<P><STRONG><a name="[a6]"></a>PLCDate</STRONG> (Thumb, 138 bytes, Stack size 16 bytes, relay.o(.text), UNUSED)
+<P><STRONG><a name="[a6]"></a>PLCDate</STRONG> (Thumb, 154 bytes, Stack size 16 bytes, relay.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[99]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_SetBits
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetUsart1Buffer
@@ -1283,7 +1283,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PLCReadRelayPin
 </UL>
 
-<P><STRONG><a name="[a7]"></a>PLCReadRelayPin</STRONG> (Thumb, 196 bytes, Stack size 24 bytes, relay.o(.text), UNUSED)
+<P><STRONG><a name="[a7]"></a>PLCReadRelayPin</STRONG> (Thumb, 194 bytes, Stack size 24 bytes, relay.o(.text), UNUSED)
 <BR><BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ReadInputDataBit
 <LI><a href="#[6a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OSTimeDlyHMSM
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART1SendDate
@@ -1656,13 +1656,14 @@ Global Symbols
 <LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Process_Socket_Data1
 </UL>
 
-<P><STRONG><a name="[9f]"></a>Process_Socket_Data1</STRONG> (Thumb, 56 bytes, Stack size 8 bytes, w5500process.o(.text))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
+<P><STRONG><a name="[9f]"></a>Process_Socket_Data1</STRONG> (Thumb, 64 bytes, Stack size 16 bytes, w5500process.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
 <LI>Call Chain = Process_Socket_Data1 &rArr; Process_Socket_Data &rArr; Read_SOCK_Data_Buffer &rArr; Write_W5500_SOCK_2Byte &rArr; SPI1_Send_Short &rArr; SPI1_Send_Byte
 </UL>
 <BR>[Calls]<UL><LI><a href="#[d2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Process_Socket_Data
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W5500_Socket_Set
 <LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;W5500_Interrupt_Process
+<LI><a href="#[64]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RelayCommand
 </UL>
@@ -2335,6 +2336,7 @@ Global Symbols
 </UL>
 <BR>[Called By]<UL><LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetUsart1Buffer
 <LI><a href="#[63]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART1SendString
+<LI><a href="#[9f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Process_Socket_Data1
 </UL>
 
 <P><STRONG><a name="[e1]"></a>__aeabi_memclr4</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, memseta.o(.text))

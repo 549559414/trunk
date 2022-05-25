@@ -5,6 +5,12 @@
 
 const u8 OpenRelay[]={0x55,0x55,0x55,0x00,0x00,0x00,0x00,0x55,0x55,0x55};
 const u8 CloseRelay[]={0x55,0x55,0x55,0x00,0x00,0x00,0x01,0x55,0x55,0x55};
+const u8 OpenRelay_2[]={0x55,0x55,0x55,0x00,0x00,0x01,0x00,0x55,0x55,0x55};
+const u8 CloseRelay_2[]={0x55,0x55,0x55,0x00,0x00,0x01,0x01,0x55,0x55,0x55};
+const u8 OpenRelay_3[]={0x55,0x55,0x55,0x00,0x00,0x02,0x00,0x55,0x55,0x55};
+const u8 CloseRelay_3[]={0x55,0x55,0x55,0x00,0x00,0x02,0x01,0x55,0x55,0x55};
+const u8 OpenRelay_4[]={0x55,0x55,0x55,0x00,0x00,0x03,0x00,0x55,0x55,0x55};
+const u8 CloseRelay_4[]={0x55,0x55,0x55,0x00,0x00,0x03,0x01,0x55,0x55,0x55};
 //const u8 IPConfig[]={0x55,0x55,0x55,0x00,0x00,0x00,0x02,0x55,0x55,0x55};
 //const u8 OpenRelayAnswer[]= "RelayOpen ";
 //const u8 CloseRelayAnswer[]="RelayClose";
@@ -32,7 +38,50 @@ u8 RelayCommand(void)
 	{
 		Commandstatus = REALYCLOSE;
 	}
+	
+	if(memcmp((const char *)OpenRelay_2,(const char *)RelayBuf,REALYBUFLEN) == 0)
+	{
+		Commandstatus = REALYOPEN_2;
+	}
+	else if(memcmp((const char *)CloseRelay_2,(const char *)RelayBuf,REALYBUFLEN) == 0)
+	{
+		Commandstatus = REALYCLOSE_2;
+	}
+	
+	if(memcmp((const char *)OpenRelay_3,(const char *)RelayBuf,REALYBUFLEN) == 0)
+	{
+		Commandstatus = REALYOPEN_3;
+	}
+	else if(memcmp((const char *)CloseRelay_3,(const char *)RelayBuf,REALYBUFLEN) == 0)
+	{
+		Commandstatus = REALYCLOSE_3;
+	}
+	
+	if(memcmp((const char *)OpenRelay_4,(const char *)RelayBuf,REALYBUFLEN) == 0)
+	{
+		Commandstatus = REALYOPEN_4;
+	}
+	else if(memcmp((const char *)CloseRelay_4,(const char *)RelayBuf,REALYBUFLEN) == 0)
+	{
+		Commandstatus = REALYCLOSE_4;
+	}
+	
 	if(Commandstatus == REALYCLOSE | Commandstatus == REALYOPEN)
+	{
+		DebugTx(RelayBuf,RelayBufLen);
+	}
+	
+	if(Commandstatus == REALYCLOSE_2 | Commandstatus == REALYOPEN_2)
+	{
+		DebugTx(RelayBuf,RelayBufLen);
+	}
+	
+	if(Commandstatus == REALYCLOSE_3 | Commandstatus == REALYOPEN_3)
+	{
+		DebugTx(RelayBuf,RelayBufLen);
+	}
+	
+	if(Commandstatus == REALYCLOSE_4 | Commandstatus == REALYOPEN_4)
 	{
 		DebugTx(RelayBuf,RelayBufLen);
 	}
@@ -48,11 +97,40 @@ void TestRelay(void)
 	
 	if(Commandstatus == REALYOPEN)
 	{
-		RealySW(OPENREALY);
+		RealySW(OPENREALY);//B4口不能做普通IO
+//		RealySW_2(OPENREALY);
 	}
 	if(Commandstatus == REALYCLOSE)
 	{
 		RealySW(CLOSEREALY);
+//		RealySW_2(CLOSEREALY);
+	}
+	
+	if(Commandstatus == REALYOPEN_2)
+	{
+		RealySW_2(OPENREALY);
+	}
+	if(Commandstatus == REALYCLOSE_2)
+	{
+		RealySW_2(CLOSEREALY);
+	}
+	
+	if(Commandstatus == REALYOPEN_3)
+	{
+		RealySW_3(OPENREALY);
+	}
+	if(Commandstatus == REALYCLOSE_3)
+	{
+		RealySW_3(CLOSEREALY);
+	}
+	
+	if(Commandstatus == REALYOPEN_4)
+	{
+		RealySW_4(OPENREALY);
+	}
+	if(Commandstatus == REALYCLOSE_4)
+	{
+		RealySW_4(CLOSEREALY);
 	}
 	
 //	OSTimeDlyHMSM(0, 0,0,500); 
